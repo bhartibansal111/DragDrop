@@ -1,0 +1,51 @@
+<div class="container-fluid" style="padding: 2%;">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>Drag and Drop</h2>
+    </div>
+  </div>
+
+  <!-- Collapsible 
+  <button type="button" class="btn btn-primary" (click)="isCollapsed1 = !isCollapsed1" [attr.aria-expanded]="!isCollapsed1"
+    aria-controls="collapseBasic1">Menu 1
+  </button>
+  <div id="collapseBasic1" [collapse]="isCollapsed1" class="card card-block card-header">
+      <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+<br>
+  <button type="button" class="btn btn-primary" (click)="isCollapsed2 = !isCollapsed2" [attr.aria-expanded]="!isCollapsed2"
+    aria-controls="collapseBasic2">Menu 2
+</button>
+  <div id="collapseBasic2" [collapse]="isCollapsed2" class="card card-block card-header">
+      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <p #detailsPanel class="example-box" *ngFor="let item of done" (click)="showDetails(detailsPanel.innerText)" cdkDrag>{{item}}</p>
+      </div>
+  </div> -->
+
+  <!-- Withput collapse -->
+
+   <div class="row">
+    <div class="col-md-3" style="border-right: 1px solid black; height: 100%;">
+      <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <p #detailsPanel class="example-box" *ngFor="let item of done" (click)="showDetails(detailsPanel.innerText)" cdkDrag>{{item}}</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <h2>Details:</h2>
+      <p #displayDetails>{{elementDetails}}</p>
+    </div>
+  </div> 
+</div>
