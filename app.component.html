@@ -1,0 +1,66 @@
+
+<div class="container-fluid" style="padding: 2%;">
+  <h2 style="text-align: center;">Drag and Drop</h2>
+  <hr>
+    
+  <div class="row">
+
+    <div class="col-md-3">
+      <div style="text-align: right;">
+        <span class="btn btn-primary" type="button" (click)="isCollapsed1 = !isCollapsed1"
+        [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic1" style="background-color: #dbdbdb; border: 0px; border-radius: 0px; color: black;">Home
+      </span>
+    </div>
+      <div id="collapseBasic1" [collapse]="isCollapsed1" class="card card-block card-header">
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+          class="example-list" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6" style="margin-top: 35px;">
+
+      <div id="collapseBasic2" [collapse]="isCollapsed2" class="card card-block card-header">
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+          class="example-list" (cdkDropListDropped)="drop($event)">
+          <p #detailsPanel class="example-box" *ngFor="let item of done" (click)="showDetails(detailsPanel.innerText)"
+            cdkDrag>{{item}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <h2>Details:</h2>
+      <p #displayDetails>{{elementDetails}}</p>
+    </div>
+
+    <!-- <div class="col-md-3">
+      <h2>Drag and Drop</h2>
+    </div> -->
+  </div>
+
+
+
+  <!-- <div class="row">
+    <div class="col-md-3" style="border-right: 1px solid black; height: 100%;">
+      <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+
+      
+
+    <div class="col-md-6">
+      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <p #detailsPanel class="example-box" *ngFor="let item of done" (click)="showDetails(detailsPanel.innerText)" cdkDrag>{{item}}</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <h2>Details:</h2>
+      <p #displayDetails>{{elementDetails}}</p>
+    </div>
+  </div>  -->
+</div>
