@@ -1,0 +1,28 @@
+<div class="container-fluid" style="padding: 2%;">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>Drag and Drop</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" style="border-right: 1px solid black; height: 100%;">
+      <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <p #detailsPanel class="example-box" *ngFor="let item of done" (click)="showDetails(detailsPanel.innerText)" cdkDrag>{{item}}</p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <h2>Details:</h2>
+      <p #displayDetails>{{elementDetails}}</p>
+    </div>
+  </div>
+</div>
